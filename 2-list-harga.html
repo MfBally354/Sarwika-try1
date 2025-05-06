@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Harga - Warung Sembako Sarwika</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .search-container {
+            margin: 15px auto;
+            max-width: 500px;
+            display: flex;
+        }
+
+        #searchInput {
+            flex-grow: 1;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px 0 0 20px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        #searchButton {
+            padding: 10px 20px;
+            background-color: #f0ad4e;
+            color: white;
+            border: none;
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #searchButton:hover {
+            background-color: #ec971f;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #2e6da4;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .tagline {
+            font-size: 16px;
+            font-style: italic;
+        }
+        
+        .price-list-header {
+            text-align: center;
+            color: #2e6da4;
+            margin: 30px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #2e6da4;
+        }
+        
+        .product-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .product-item {
+            display: flex;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-image {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .product-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 0 5px 0;
+            color: #333;
+        }
+        
+        .product-description {
+            font-size: 14px;
+            color: #666;
+            margin: 0 0 15px 0;
+        }
+        
+        .product-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #d9534f;
+        }
+        
+        .category {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 30px 0 15px 0;
+        }
+        
+        .category-title {
+            color: #2e6da4;
+            margin: 0 0 10px 0;
+            border-bottom: 1px solid #bce8f1;
+            padding-bottom: 5px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #777;
+            font-size: 14px;
+            background-color: #e8f4f8;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin: 20px 0;
+            color: #2e6da4;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .update-date {
+            font-style: italic;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 30px;
+            color: #999;
+        }
+        
+        @media (max-width: 768px) {
+            .product-item {
+                flex-direction: row;
+                align-items: center;
+            }
+            
+            .product-image {
+                width: 100px;
+                height: 100px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .product-image {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .product-name {
+                font-size: 16px;
+            }
+            
+            .product-price {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">SARWIKA</div>
+        <div class="tagline">Sembako Lengkap, Harga Bersahabat</div>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Cari produk...">
+            <button id="searchButton">Cari</button>
+        </div>
+    </header>
+    
+    <div class="container">
+        <h1 class="price-list-header">Daftar Harga Produk</h1>
+        
+        <a href="index.html" class="back-link">← Kembali ke Halaman Utama</a>
+        
+        <class="category">
+            <h2 class="category-title">Mie Instan</h2>
+            <d class="product-container">
+                <div class="product-item">
+                    <img src="indomie-goreng.jpg" alt="Indomie Goreng" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Indomie Goreng</h3>
+                            <p class="product-description">Mie goreng instan original, 85 gram</p>
+                        </div>
+                        <div class="product-price">Rp 3.500</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="indomie-rendang2.jpg" alt="Indomie Rendang" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Indomie Rendang</h3>
+                            <p class="product-description">Mie goreng rasa rendang, 85 gram</p>
+                        </div>
+                        <div class="product-price">Rp 3.500</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="mie-sedaap-goreng.jpg" alt="Mie Sedaap Goreng" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Mie Sedaap Goreng</h3>
+                            <p class="product-description">Mie goreng dengan bumbu khas, 90 gram</p>
+                        </div>
+                        <div class="product-price">Rp 3.500</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="indomie-ayam-bawang.jpg" alt="Indomie Ayam Bawang" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Indomie Ayam Bawang</h3>
+                            <p class="product-description">Mie kuah instan rasa ayam bawang, 75 gram</p>
+                        </div>
+                        <div class="product-price">Rp 3.500</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="indome-ayam-spesial.webp" alt="Indomie Ayam Spesial" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Indomie Ayam Spesial</h3>
+                            <p class="product-description">Mie kuah instan rasa ayam spesial, 75 gram</p>
+                        </div>
+                        <div class="product-price">Rp 3.500</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="indomie-soto.jpg" alt="Indomie Soto" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Indomie Soto</h3>
+                            <p class="product-description">Mie kuah rasa soto, 75 gram</p>
+                        </div>
+                        <div class="product-price">Rp 3.500</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="mie-sedaap-soto.jpg" alt="Mie Sedaap Soto" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Mie Sedaap Soto</h3>
+                            <p class="product-description">Mie sedaap rasa soto, 85 gram</p>
+                        </div>
+                        <div class="product-price">Rp 3.500</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="indomie-goreng-jumbo.jpg" alt="Indomie Goreng Jumbo" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Indomie Goreng Jumbo</h3>
+                            <p class="product-description">Mie goreng instan ukuran jumbo, 130 gram</p>
+                        </div>
+                        <div class="product-price">Rp 5.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="indomie-rendang-jumbo.jpg" alt="Indomie Rendang Jumbo" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Indomie Rendang Jumbo</h3>
+                            <p class="product-description">Mie goreng instan rasa rendang ukuran jumbo, 130 gram</p>
+                        </div>
+                        <div class="product-price">Rp 5.000</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="mie-sedaap-isi-5.jpg" alt="sedaap isi 5" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Mie Sedaap Isi 5</h3>
+                            <p class="product-description">Mie sedaap rasa soto isi 5, 85 gram</p>
+                        </div>
+                        <div class="product-price">Rp 15.000</div>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <h2 class="category-title">Telur</h2>
+                    <div class="product-container">
+                        <div class="product-item">
+                            <img src="telur-1-kg.jpg" alt="Telur Ayam 1kg" class="product-image">
+                            <div class="product-info">
+                                <div>
+                                    <h3 class="product-name">Telur Ayam 1kg</h3>
+                                    <p class="product-description">Telur ayam segar, 1kg (isi sekitar 16-18 butir)</p>
+                                </div>
+                                <div class="product-price">Rp 29.000</div>
+                            </div>
+                        </div>
+                
+                        <div class="product-item">
+                            <img src="telur-1per2-kg.webp" alt="Telur Ayam 1/2kg" class="product-image">
+                            <div class="product-info">
+                                <div>
+                                    <h3 class="product-name">Telur Ayam 1/2kg</h3>
+                                    <p class="product-description">Telur ayam segar, 1/2kg (isi sekitar 8-9 butir)</p>
+                                </div>
+                                <div class="product-price">Rp 15.000</div>
+                            </div>
+                        </div>
+                
+                        <div class="product-item">
+                            <img src="telur-1per4-kg.jpg" alt="Telur Ayam 1/4kg" class="product-image">
+                            <div class="product-info">
+                                <div>
+                                    <h3 class="product-name">Telur Ayam 1/4kg</h3>
+                                    <p class="product-description">Telur ayam segar, 1/4kg (isi sekitar 4-5 butir)</p>
+                                </div>
+                                <div class="product-price">Rp 8.000</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        <div class="category">
+            <h2 class="category-title">Beras</h2>
+            <div class="product-container">
+                <div class="product-item">
+                    <img src="beras-desa.jpg" alt="Beras Desa" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Beras Desa</h3>
+                            <p class="product-description">Beras putih kualitas premium, per kg</p>
+                        </div>
+                        <div class="product-price">Rp 15.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="beras-pandan.jpg" alt="Beras Pandan Wangi" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Beras Pandan Wangi</h3>
+                            <p class="product-description">Beras wangi kualitas super, per kg</p>
+                        </div>
+                        <div class="product-price">Rp 16.500</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category">
+            <h2 class="category-title">Minyak Goreng</h2>
+            <div class="product-container">
+                <div class="product-item">
+                    <img src="minyak-goreng-sunco.webp" alt="Minyak Goreng Sunco" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Minyak Goreng Sunco 2 Liter</h3>
+                            <p class="product-description">Minyak goreng kemasan, 2 liter</p>
+                        </div>
+                        <div class="product-price">Rp 42.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="minyak-filma-1l.webp" alt="Minyak Goreng Filma" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Minyak Goreng Filma 1 Liter</h3>
+                            <p class="product-description">Minyak goreng kemasan, 1 liter</p>
+                        </div>
+                        <div class="product-price">Rp 22.000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category">
+            <h2 class="category-title">Gula & Kopi</h2>
+            <div class="product-container">
+                <div class="product-item">
+                    <img src="gulaku.avif" alt="Gulaku" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Gulaku</h3>
+                            <p class="product-description">Gula pasir putih, per kg</p>
+                        </div>
+                        <div class="product-price">Rp 18.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="kapal-api-165g.webp" alt="Kopi Kapal Api" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Kopi Kapal Api</h3>
+                            <p class="product-description">Kopi bubuk hitam, 165 gram</p>
+                        </div>
+                        <div class="product-price">Rp 15.500</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="white-coffe-3in1.png" alt="White Coffee 3in1" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">White Coffee 3in1</h3>
+                            <p class="product-description">Kopi bubuk instan white coffee 3in1, sachet</p>
+                        </div>
+                        <div class="product-price">Rp 2.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="white-coffe-caramel.jpg" alt="White Coffee Caramel" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">White Coffee Caramel</h3>
+                            <p class="product-description">Kopi bubuk instan white coffee rasa caramel, sachet</p>
+                        </div>
+                        <div class="product-price">Rp 2.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="white-coffe-original.webp" alt="White Coffee Original" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">White Coffee Original</h3>
+                            <p class="product-description">Kopi bubuk instan white coffee original, sachet</p>
+                        </div>
+                        <div class="product-price">Rp 2.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="gooday-capucinno.webp" alt="Good Day Cappuccino" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Good Day Cappuccino</h3>
+                            <p class="product-description">Kopi bubuk instan rasa cappuccino, sachet</p>
+                        </div>
+                        <div class="product-price">Rp 2.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="gooday-mocacinno.jpg" alt="Good Day Mocacino" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Good Day Mocacino</h3>
+                            <p class="product-description">Kopi bubuk instan rasa mocacino, sachet</p>
+                        </div>
+                        <div class="product-price">Rp 2.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="energen-kacang-hijau.jpg" alt="Energen Kacang Hijau" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Energen Kacang Hijau</h3>
+                            <p class="product-description">Sereal instan rasa kacang hijau, sachet</p>
+                        </div>
+                        <div class="product-price">Rp 2.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="frisianflag-putih-kaleng.jpg" alt="Frisian Flag Putih kaleng" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Frisian Flag Putih Kaleng</h3>
+                            <p class="product-description">Susu kental manis putih, kaleng</p>
+                        </div>
+                        <div class="product-price">Rp 13.500</div>
+                    </div>
+                </div>
+
+
+                <div class="product-item">
+                    <img src="frisian-flag-putih1.jpg" alt="Frisian Flag Putih" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Frisian Flag Putih</h3>
+                            <p class="product-description">Susu kental manis putih, sachet</p>
+                        </div>
+                        <div class="product-price">Rp 2.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="frisian-flag-coklat.webp" alt="Frisian Flag Coklat" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Frisian Flag Coklat</h3>
+                            <p class="product-description">Susu kental manis coklat, sachet</p>
+                        </div>
+                        <div class="product-price">Rp 2.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="milo.jpg" alt="Milo" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Milo</h3>
+                            <p class="product-description">Minuman coklat berenergi, sachet</p>
+                        </div>
+                        <div class="product-price">Rp 2.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="dancow-putih.webp" alt="Dancow Putih" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Dancow Putih</h3>
+                            <p class="product-description">Susu bubuk putih, sachet</p>
+                        </div>
+                        <div class="product-price">Rp 4.500</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="dancow-coklat.png" alt="Dancow Coklat" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Dancow Coklat</h3>
+                            <p class="product-description">Susu bubuk rasa coklat, sachet</p>
+                        </div>
+                        <div class="product-price">Rp 4.500</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bumbu Masakan -->
+        <div class="category">
+            <h2 class="category-title">Bumbu Masakan</h2>
+            <div class="product-container">
+                <div class="product-item">
+                    <img src="masako-sapi.png" alt="Masako Sapi" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Masako Sapi</h3>
+                            <p class="product-description">Penyedap rasa sapi praktis untuk masakan lebih lezat, per sachet</p>
+                        </div>
+                        <div class="product-price">Rp 500</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="masako-ayam.png" alt="Masako ayam" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Masako Ayam</h3>
+                            <p class="product-description">Penyedap rasa ayam untuk hidangan sayur dan tumisan, per sachet</p>
+                        </div>
+                        <div class="product-price">Rp 500</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="masako-jamur.jpg" alt="Masako Jamur" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Masako Jamur</h3>
+                            <p class="product-description">Penyedap rasa jamur untuk hidangan sayur dan tumisan, per sachet</p>
+                        </div>
+                        <div class="product-price">Rp 500</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="jinten bubuk.jpg" alt="Jinten Bubuk" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Jinten Bubuk</h3>
+                            <p class="product-description">Bubuk jinten kualitas premium untuk masakan tradisional, kemasan sachet</p>
+                        </div>
+                        <div class="product-price">Rp 1.000</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="racik-ikan.jpg" alt="Racik Ikan Goreng" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Racik Ikan Goreng</h3>
+                            <p class="product-description">Bumbu praktis untuk olahan ikan goreng dengan rasa gurih sempurna</p>
+                        </div>
+                        <div class="product-price">Rp 2.000</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="racik-tempe.webp" alt="Racik Tempe dan Tahu Goreng" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Racik Tempe dan Tahu Goreng</h3>
+                            <p class="product-description">Bumbu siap pakai untuk tempe dan tahu goreng yang renyah dan lezat</p>
+                        </div>
+                        <div class="product-price">Rp 2.000</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="desaku-kuyit-bubuk.jpg" alt="Desaku Kunyit Bubuk" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Desaku Kunyit Bubuk</h3>
+                            <p class="product-description">Bubuk kunyit alami untuk masakan sehat dan aromatis, kemasan praktis</p>
+                        </div>
+                        <div class="product-price">Rp 1.500</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="boncabe-level-15.jpg" alt="Bon Cabe Level 15" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Bon Cabe Level 15</h3>
+                            <p class="product-description">Cabai bubuk level sedang untuk tambahan rasa pedas pada makanan</p>
+                        </div>
+                        <div class="product-price">Rp 1.000</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="bon-cabe-level30.jpg" alt="Bon Cabe Level 30" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Bon Cabe Level 30</h3>
+                            <p class="product-description">Cabai bubuk extra pedas untuk pecinta sensasi pedas maksimal</p>
+                        </div>
+                        <div class="product-price">Rp 1.000</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="saus-sambal-pedas-kecil1.jpg" alt="Saus Sambal Pedas" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Saus Sambal Pedas (3 Pcs)</h3>
+                            <p class="product-description">Saus sambal pedas kemasan sachet praktis, paket isi 3 pcs</p>
+                        </div>
+                        <div class="product-price">Rp 1.000</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="kaldu-jamur-merang.webp" alt="Kaldu Jamur" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Kaldu Jamur Merang</h3>
+                            <p class="product-description">Penyedap rasa alami dari ekstrak jamur untuk masakan sehat</p>
+                        </div>
+                        <div class="product-price">Rp 500</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="moto-mobil.png" alt="Garam Cap Mobil" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Moto Cap Mobil</h3>
+                            <p class="product-description">Garam meja halus berkualitas untuk kebutuhan memasak sehari-hari</p>
+                        </div>
+                        <div class="product-price">Rp 3.000</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="garam-kapal.jpg" alt="Garam Cap Kapal" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Garam Cap Kapal</h3>
+                            <p class="product-description">Garam beryodium untuk masakan lebih sedap dan sehat</p>
+                        </div>
+                        <div class="product-price">Rp 2.000</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="sasa-tepung-serbaguna.png" alt="Sasa Tepung Serbaguna" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Sasa Tepung Serbaguna</h3>
+                            <p class="product-description">Tepung bumbu praktis untuk aneka gorengan renyah dan gurih</p>
+                        </div>
+                        <div class="product-price">Rp 3.000</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="kecap-lele.png" alt="Kecap Lele" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Kecap Lele</h3>
+                            <p class="product-description">Kecap manis untuk tambahan cita rasa pada hidangan, kemasan pouch</p>
+                        </div>
+                        <div class="product-price">Rp 4.000</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="kecap-sedaap-keci.jpg" alt="Kecap Sedaap" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Kecap Sedaap</h3>
+                            <p class="product-description">Kecap manis dengan rasa gurih khas untuk aneka masakan, kemasan kecil</p>
+                        </div>
+                        <div class="product-price">Rp 2.000</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="kecap-indofood-besar.jpeg" alt="Indofood Kecap Manis" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Indofood Kecap Manis</h3>
+                            <p class="product-description">Kecap manis premium dengan rasa khas untuk pelengkap masakan, ukuran tanggung</p>
+                        </div>
+                        <div class="product-price">Rp 17.000</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="sun-kara.jpg" alt="Sun Kara" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Sun Kara</h3>
+                            <p class="product-description">Santan kelapa siap pakai untuk masakan lebih praktis dan gurih</p>
+                        </div>
+                        <div class="product-price">Rp 6.000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kesehatan dan Kecantikan -->
+        <div class="category">
+            <h2 class="category-title">Kesehatan dan Kecantikan</h2>
+            <div class="product-container">
+                <div class="product-item">
+                    <img src="lifebuoy-original.webp" alt="Sabun lifebuoy" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Sabun Lifebuoy</h3>
+                            <p class="product-description">Sabun mandi antiseptik, 85g</p>
+                        </div>
+                        <div class="product-price">Rp 3.500</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="sabun-lifebuoy-lemon.jpg" alt="Lifebuoy Lemon Fresh" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Lifebuoy Lemon Fresh</h3>
+                            <p class="product-description">Sabun antiseptik dengan aroma lemon segar, membersihkan kulit dan membunuh kuman efektif</p>
+                        </div>
+                        <div class="product-price">Rp 3.500</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="dettol-hijau.avif" alt="Dettol" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Dettol</h3>
+                            <p class="product-description">Sabun antiseptik perlindungan 10x lipat dari kuman, menjaga kulit tetap sehat dan terlindungi</p>
+                        </div>
+                        <div class="product-price">Rp 4.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="nuvo-merah.webp" alt="Nuvo Merah" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Nuvo Merah</h3>
+                            <p class="product-description">Sabun kesehatan dengan formula Active-Deo untuk kesegaran tahan lama, varian klasik</p>
+                        </div>
+                        <div class="product-price">Rp 4.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="nuvo-biru.jpg" alt="Nuvo Biru" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Nuvo Biru</h3>
+                            <p class="product-description">Sabun kesehatan dengan ekstrak antiseptik alami, menyegarkan dan membersihkan kulit</p>
+                        </div>
+                        <div class="product-price">Rp 4.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="giv-biru.webp" alt="Giv Biru" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Giv Biru</h3>
+                            <p class="product-description">Sabun mandi dengan formula Fresh Cool yang memberikan sensasi segar sepanjang hari</p>
+                        </div>
+                        <div class="product-price">Rp 4.500</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="giv-putih.webp" alt="Giv Putih" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Giv Putih</h3>
+                            <p class="product-description">Sabun mandi dengan kandungan pelembap, membuat kulit halus dan lembut alami</p>
+                        </div>
+                        <div class="product-price">Rp 4.500</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="giv-merah.jpg" alt="Giv Merah" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Giv Merah</h3>
+                            <p class="product-description">Sabun mandi dengan aroma buah segar yang menyegarkan tubuh dan pikiran</p>
+                        </div>
+                        <div class="product-price">Rp 4.500</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="k-soap-putih.jpg" alt="K Soap" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">K Soap</h3>
+                            <p class="product-description">Sabun multi guna dengan formula pembersih yang efektif untuk tubuh dan pakaian</p>
+                        </div>
+                        <div class="product-price">Rp 4.500</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="downy-kecil.jpg" alt="Downy Sachet Kecil" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Downy Sachet Kecil (All Varian)</h3>
+                            <p class="product-description">Pelembut dan pewangi pakaian dalam kemasan praktis, tersedia berbagai varian aroma</p>
+                        </div>
+                        <div class="product-price">Rp 500</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="downy-besar.jpg" alt="Downy Sachet Besar" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Downy Sachet Besar</h3>
+                            <p class="product-description">Pelembut pakaian dengan wangi tahan lama hingga 7 hari, kemasan ekonomis</p>
+                        </div>
+                        <div class="product-price">Rp 1.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="so-klin-kecil.jpg" alt="So Klin Sachet Kecil" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">So Klin Sachet Kecil (All Varian)</h3>
+                            <p class="product-description">Deterjen dengan teknologi anti noda, membersihkan pakaian dengan cepat dan efektif</p>
+                        </div>
+                        <div class="product-price">Rp 500</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="soklin-besar.jpg" alt="So Klin Sachet Besar" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">So Klin Sachet Besar (All Varian)</h3>
+                            <p class="product-description">Deterjen bubuk dengan formula color & white untuk segala jenis pakaian, ukuran ekonomis</p>
+                        </div>
+                        <div class="product-price">Rp 1.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="rinso-cair-sachet.jpg" alt="Rinso Cair Sachet" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Rinso Cair Sachet (All Varian)</h3>
+                            <p class="product-description">Deterjen cair 18ml yang praktis, cepat larut dan membersihkan noda membandel</p>
+                        </div>
+                        <div class="product-price">Rp 1.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="rinso-bubuk.jpg" alt="Rinso Bubuk 44g" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Rinso Bubuk 44g</h3>
+                            <p class="product-description">Deterjen bubuk dengan teknologi anti noda untuk hasil cucian lebih bersih dan wangi</p>
+                        </div>
+                        <div class="product-price">Rp 1.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="rinso-bubuk-besar.avif" alt="Rinso Bubuk 195g" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Rinso Bubuk 195g</h3>
+                            <p class="product-description">Deterjen bubuk kemasan sedang dengan formula anti bakteri untuk pakaian lebih higienis</p>
+                        </div>
+                        <div class="product-price">Rp 5.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="rinso-bubuk-besarrr.jpg" alt="Rinso Bubuk 400g" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Rinso Bubuk 400g</h3>
+                            <p class="product-description">Deterjen bubuk kemasan besar untuk kebutuhan keluarga, ekonomis dan tahan lama</p>
+                        </div>
+                        <div class="product-price">Rp 10.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="ekonomi cuci-piring.jpg" alt="Ekonomi Sabun Cream" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Ekonomi Sabun Cream</h3>
+                            <p class="product-description">Sabun krim pembersih serbaguna untuk mencuci pakaian dan peralatan rumah tangga</p>
+                        </div>
+                        <div class="product-price">Rp 2.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="kapur-barus.jpg" alt="Kapur Barus" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Kapur Barus</h3>
+                            <p class="product-description">Pengharum dan anti ngengat untuk lemari pakaian dan kamar mandi</p>
+                        </div>
+                        <div class="product-price">Rp 2.500</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="nuvo-cair-450ml.jpg" alt="Nuvo Cair 450ml" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Nuvo Cair 450ml</h3>
+                            <p class="product-description">Sabun mandi cair dengan formula melembabkan dan menyegarkan kulit, botol ekonomis</p>
+                        </div>
+                        <div class="product-price">Rp 20.000</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="clear-kecil-sachet.jpeg" alt="Shampoo Clear Sachet" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Shampoo Clear Sachet (All Varian)</h3>
+                            <p class="product-description">Shampoo anti ketombe dalam kemasan sachet kecil praktis, cocok untuk semua varian dan jenis rambut</p>
+                        </div>
+                        <div class="product-price">Rp 500</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="sampo-lifebuoy-kecil.jpg" alt="Shampoo Lifebuoy Sachet" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Shampoo Lifebuoy Sachet (All Varian)</h3>
+                            <p class="product-description">Shampoo keluarga dengan perlindungan dari ketombe dan rambut rontok, tersedia dalam berbagai varian</p>
+                        </div>
+                        <div class="product-price">Rp 500</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="autan-sachet.jpg" alt="Autan Lotion" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Autan Lotion (All Varian)</h3>
+                            <p class="product-description">Lotion anti nyamuk untuk perlindungan kulit dari gigitan nyamuk hingga berjam-jam</p>
+                        </div>
+                        <div class="product-price">Rp 500</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="sunlight-strawberry.jpg" alt="Sunlight Strawberry" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Sunlight Strawberry 600Ml</h3>
+                            <p class="product-description">Sabun cuci piring dengan aroma stroberi menyegarkan, ampuh hilangkan lemak membandel</p>
+                        </div>
+                        <div class="product-price">Rp 13.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="sunlight-lemon.jpg" alt="Sunlight Lemon" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Sunlight Lemon 600Ml</h3>
+                            <p class="product-description">Sunlight lemon segar, membersihkan peralatan makan dengan cepat dan efektif, aroma menyegarkan</p>
+                        </div>
+                        <div class="product-price">Rp 11.500</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="sunlight-extra.jpg" alt="Sunlight Extra Higienis" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Sunlight Extra Higienis 600Ml</h3>
+                            <p class="product-description">Sabun cuci piring dengan formula higienis ekstra, membasmi bakteri dan menjaga kebersihan maksimal</p>
+                        </div>
+                        <div class="product-price">Rp 17.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="ekonomi cuci-piring.jpg" alt="Ekonomi Cuci Piring" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Ekonomi Cuci Piring</h3>
+                            <p class="product-description">Sabun cuci piring ekonomis yang efektif menghilangkan minyak dan kotoran dengan harga terjangkau</p>
+                        </div>
+                        <div class="product-price">Rp 9.000</div>
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+
+        <!-- Makanan/Camilan -->
+        <div class="category">
+            <h2 class="category-title">Makanan/Camilan</h2>
+            <div class="product-container">
+                <div class="product-item">
+                    <img src="biskuat.jpg" alt="biskuat" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Biskuat</h3>
+                            <p class="product-description">Biskuat isi 6</p>
+                        </div>
+                        <div class="product-price">Rp 1.000</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="roma-malist-keju.jpg" alt="Malkist Keju" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Malkist Keju</h3>
+                            <p class="product-description">Biskuit renyah dengan lapisan krim keju yang gurih, camilan praktis untuk di rumah atau bepergian</p>
+                        </div>
+                        <div class="product-price">Rp 1.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="malkist-coklat.webp" alt="Malkist Coklat" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Malkist Coklat</h3>
+                            <p class="product-description">Biskuit renyah dengan lapisan krim coklat yang manis, cocok untuk teman santai atau bekal anak sekolah</p>
+                        </div>
+                        <div class="product-price">Rp 1.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="oreo-kecil.avif" alt="Oreo" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Oreo</h3>
+                            <p class="product-description">Biskuit coklat legendaris dengan krim vanilla di tengahnya, nikmat disantap langsung atau dicelup susu</p>
+                        </div>
+                        <div class="product-price">Rp 2.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="better-kecil.webp" alt="Better" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Better</h3>
+                            <p class="product-description">Biskuit lembut dengan rasa butter yang khas, tekstur lumer di mulut yang bikin ketagihan</p>
+                        </div>
+                        <div class="product-price">Rp 2.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="kacang-campur-2kelinci.jpeg" alt="Kacang Campur Dua Kelinci" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Kacang Campur Dua Kelinci</h3>
+                            <p class="product-description">Camilan kacang beragam yang diproses dengan higienis, renyah dan gurih untuk teman nonton TV</p>
+                        </div>
+                        <div class="product-price">Rp 500</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="tictac-kecil.jpg" alt="Tic Tac" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Tic Tac</h3>
+                            <p class="product-description">Permen kecil penyegar nafas dengan beragam pilihan rasa, kemasan praktis untuk dibawa kemana saja</p>
+                        </div>
+                        <div class="product-price">Rp 500</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="nyam-nyam-kecil.jpeg" alt="Nyam Nyam" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Nyam Nyam</h3>
+                            <p class="product-description">Permen kenyal dengan isian jus buah yang menyegarkan, favorit anak-anak dan remaja</p>
+                        </div>
+                        <div class="product-price">Rp 2.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="mie-kremez.jpg" alt="Mie Kremezz" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Mie Kremezz</h3>
+                            <p class="product-description">Mie kering renyah dengan bumbu gurih pedas, camilan seru untuk di rumah atau saat bersantai</p>
+                        </div>
+                        <div class="product-price">Rp 1.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="vit-botol.jpg" alt="Minuman Botol Vit" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Minuman Botol Vit</h3>
+                            <p class="product-description">Air mineral murni dalam kemasan botol praktis, sehat dan menyegarkan untuk hidrasi sepanjang hari</p>
+                        </div>
+                        <div class="product-price">Rp 3.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="aguaria-600ml.jpg" alt="Minuman Botol Aquaria" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Minuman Botol Aguaria</h3>
+                            <p class="product-description">Air mineral berkualitas dengan proses penyaringan bertingkat, tersedia dalam botol yang mudah dibawa</p>
+                        </div>
+                        <div class="product-price">Rp 3.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="tejahe-permen.jpeg" alt="Permen Jahe" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Tejahe</h3>
+                            <p class="product-description">Permen tradisional dengan ekstrak jahe asli, menghangatkan tenggorokan dan melegakan pernapasan, isi 4pcs</p>
+                        </div>
+                        <div class="product-price">Rp 1.000</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Barang Lainnya -->
+        <div class="category">
+            <h2 class="category-title">Barang Lainnya</h2>
+            <div class="product-container">
+                <div class="product-item">
+                    <img src="tissue-jolly.jpg" alt="Tisu Jolly" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Tisu Jolly</h3>
+                            <p class="product-description">Tisu wajah, 200 lembar</p>
+                        </div>
+                        <div class="product-price">Rp 4.000</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="gas-elpigi.webp" alt="gas elpigi" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Gas Elpigi</h3>
+                            <p class="product-description">Tabung gas melon isi 3kg elpiji, langsung pertamina</p>
+                        </div>
+                        <div class="product-price">Rp 20.000</div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="jas-hujan-plastik.png" alt="Jas Hujan Plastik" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Jas Hujan Plastik</h3>
+                            <p class="product-description">
+                                Jas hujan praktis berbahan plastik tebal, melindungi dari hujan dengan sempurna, 
+                                ringan dan mudah disimpan dalam tas
+                            </p>
+                        </div>
+                        <div class="product-price">Rp 5.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="lampu-visalux.jpg" alt="Lampu Visalux" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Lampu Visalux</h3>
+                            <p class="product-description">
+                                Lampu hemat energi dengan teknologi LED, cahaya terang berumur panjang hingga 
+                                15.000 jam dan hanya mengkonsumsi 7 watt listrik
+                            </p>
+                        </div>
+                        <div class="product-price">Rp 15.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="baterai-aa-abs.webp" alt="Baterai ABC AA" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Baterai ABC AA</h3>
+                            <p class="product-description">
+                                Baterai alkaline tahan lama untuk berbagai perangkat elektronik, daya tahan 
+                                hingga 2 tahun dalam penyimpanan
+                            </p>
+                        </div>
+                        <div class="product-price">Rp 3.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <img src="plesterin-aa.webp" alt="Plesterin AA" class="product-image">
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Plesterin AA</h3>
+                            <p class="product-description">
+                                Plester luka anti air dengan lapisan antiseptik, mempercepat penyembuhan dan 
+                                mencegah infeksi, praktis untuk P3K keluarga
+                            </p>
+                        </div>
+                        <div class="product-price">Rp 10.000</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        <p class="update-date">* Harga dapat berubah sewaktu-waktu. Terakhir diperbarui: 2 Mei 2025</p>
+        
+        <a href="index.html" class="back-link">← Kembali ke Halaman Utama</a>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Warung Sembako Sarwika. Semua Hak Dilindungi.</p>
+        <p>Jl. Borobudur, Kecamatan Semarang Barat, Kota Semarang</p>
+        <p>Telp: 0895-3524-15628</p>
+    </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const productItems = document.querySelectorAll('.product-item');
+        
+        function filterProducts() {
+            const searchTerm = searchInput.value.toLowerCase();
+            
+            productItems.forEach(item => {
+                const productName = item.querySelector('.product-name').textContent.toLowerCase();
+                const productDesc = item.querySelector('.product-description').textContent.toLowerCase();
+                
+                if (productName.includes(searchTerm) || productDesc.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Perlihatkan kembali kategori yang memiliki produk yang sesuai
+            document.querySelectorAll('.category').forEach(category => {
+                const visibleProducts = category.querySelectorAll('.product-item[style="display: flex;"]').length;
+                if (visibleProducts > 0) {
+                    category.style.display = 'block';
+                } else {
+                    category.style.display = 'none';
+                }
+            });
+        }
+        
+        searchButton.addEventListener('click', filterProducts);
+        
+        searchInput.addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                filterProducts();
+            }
+            
+            // Jika input kosong, tampilkan semua produk kembali
+            if (searchInput.value === '') {
+                productItems.forEach(item => {
+                    item.style.display = 'flex';
+                });
+                document.querySelectorAll('.category').forEach(category => {
+                    category.style.display = 'block';
+                });
+            }
+        });
+    });
+</script>    
+
+</body>
+</html>
