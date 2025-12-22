@@ -63,8 +63,8 @@ Sarwika-try1/
 
 ### 1. Clone atau Download Repository
 ```bash
-git clone https://github.com/username/sarwika.git
-cd sarwika
+git clone https://github.comMfBally354/Sarwika-try1.git
+cd Sarwika-try1
 ```
 
 ### 2. Buka di Browser
