@@ -141,9 +141,9 @@ Cari nama produk di file `2-list-harga.html` dan ubah nilai di dalam tag:
 ## 📍 Informasi Toko
 
 **Warung Sembako Sarwika**
-- 📍 Alamat: Jl. Borobudur, Kecamatan Semarang Barat, Kota Semarang
+- 📍 Alamat: Kecamatan Semarang Barat, Kota Semarang
 - 📞 Telepon: 0895-3524-15628
-- 🕐 Jam Operasional: [Sesuaikan dengan jam buka toko]
+- 🕐 Jam Operasional: 07.00 - 19.00
 
 ## 📊 Statistik Produk
 
