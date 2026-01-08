@@ -206,7 +206,7 @@ Project ini adalah open source dan tersedia untuk digunakan secara bebas.
 
 ## 👨‍💻 Developer
 
-Dikembangkan dengan ❤️ oleh Iqbal
+Dikembangkan dengan ❤️ oleh Iqbal Guntur
 
 ## 📞 Kontak Developer
 
