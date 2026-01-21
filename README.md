@@ -3,6 +3,7 @@
 Website katalog digital untuk Warung Sembako Sarwika yang menampilkan daftar produk dan harga sembako lengkap dengan fitur pencarian.
 
 > **Tagline:** *Sembako Lengkap, Harga Bersahabat*
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/40470c79-2a55-497d-ad9a-2d8b7a6a0eff" />
 
 ## 📋 Deskripsi
 
