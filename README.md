@@ -179,7 +179,7 @@ Website ini dapat di-deploy ke:
    Aktifkan GitHub Pages di Settings → Pages
 
 2. **Netlify**
-   - Drag & drop folder ke [Netlify Drop](https://app.netlify.com/drop)
+   - Drag & drop folder ke [Netlify Drop](https://app.netlify.com/)
 
 3. **Vercel**
    - Import repository dari GitHub ke Vercel
@@ -199,10 +199,6 @@ Saran dan masukan sangat diterima! Jika Anda menemukan bug atau ingin menambahka
 3. Commit perubahan (`git commit -m 'Menambahkan fitur baru'`)
 4. Push ke branch (`git push origin fitur-baru`)
 5. Buat Pull Request
-
-## 📄 Lisensi
-
-Project ini adalah open source dan tersedia untuk digunakan secara bebas.
 
 ## 👨‍💻 Developer
 
