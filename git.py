@@ -4,7 +4,7 @@ import os
 import subprocess
 import sys
 
-# ====== WARNA =======
+# ======= WARNA =======
 class Colors:
     BLUE = '\033[1;34m'      # BIRU
     GREEN = '\033[1;32m'     # HIJAU
